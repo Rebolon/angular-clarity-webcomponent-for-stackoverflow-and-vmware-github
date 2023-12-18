@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="/assets/webcomponent/styles.css">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+
+<script src="./assets/webcomponent/polyfills.js" type="module"></script>
+<script src="./assets/webcomponent/main.js" type="module"></script>
+<script defer>
+  setTimeout(() => {
+    const myAlert = document.getElementById('my-alert-id');
+    const alertsType = ['success', 'info', 'warning', 'error'];
+
+    myAlert.alertText = 'Web component demo';
+
+    let typeIndex = 0;
+    if (myAlert) {
+      setInterval(() => {
+        typeIndex = typeIndex + 1 > alertsType.length ? 0 : typeIndex+1;
+        myAlert.alertType = alertsType[typeIndex];
+      }, 5000);
+    } else {
+      window.alert('web-component not available in page');
+    }
+  }, 2000);
+</script>
+</html>
